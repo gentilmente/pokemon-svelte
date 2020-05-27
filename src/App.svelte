@@ -2,18 +2,21 @@
   import { onMount } from "svelte";
   import Poke from "./Poke.svelte";
   import Pokes from "./Pokes.svelte";
+  import Trainers from "./Trainers.svelte";
+  import Trainer from "./Trainer.svelte";
   let pokes;
   let poke;
+  let trainers;
+  let trainer;
 
   let query = "";
   let result;
 
   async function getResult() {
     const response = await fetch(
-      `https://api.dev.perfivo.com/pokeapi/v0/pokemon/${query}`
+      `https://pokeapi.co/api/v2/pokemon/${query}/`
     );
-    let text = await response.text();
-    let data = text;
+    let data = await response.json();
     return data;
   }
 
@@ -29,11 +32,18 @@
       <div class="col-md-8 text-center">
         <h1 class="display-4">Los Pokemones</h1>
 
-        <Pokes {pokes} />
+        <!--
+           <Pokes {pokes} /> 
+        -->
+        <Trainers {trainers} />
 
         <form class="form-inline" on:submit|preventDefault={submitHandler}>
-          <input class="w-75 form-control" type="number" bind:value={query} />
-          <button class="w-25 btn btn-dark">Submit</button>
+          <input
+            class="w-75 form-control"
+            placeholder="pokemon id"
+            type="number"
+            bind:value={query} />
+          <button class="w-25 btn btn-dark">get</button>
         </form>
 
         {#if result === undefined}
@@ -43,8 +53,8 @@
 
             <p>Loading...</p>
 
-          {:then value}
-            {value}
+          {:then poke}
+            <Poke {poke} />
           {:catch error}
             {error.message}
           {/await}

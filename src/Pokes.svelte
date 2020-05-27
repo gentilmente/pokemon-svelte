@@ -11,7 +11,6 @@
         pokes = data;
       });
   })
-  console.log(pokes);
 </script>
 
 {#if pokes}
