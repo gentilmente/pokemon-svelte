@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../Poke.svelte",
+    "../../Pokes.svelte"
+  ],
+  "sourcesContent": [
+    "\n<script>\n  // create a prop\n  export let poke;\n</script>\n\n<article>\n    <h1>{poke.name}</h1>\n    <small>\n      id: <b>{poke.id}</b>   \n    </small><br/>\n    <small>\n      Number: <b>{poke.number}</b>\n    </small><br/>\n    <small>\n      poke's trainer: <b>{poke.id}</b>\n    </small>\n</article>\n\n<style>\n  article {\n    margin: 0 0 1em 0;\n  }\n  h1 {\n    font-size: 1.4em;\n    margin: 0;\n    display: block;\n  }\n</style>\n",
+    "<script>\n  import { onMount } from \"svelte\";\n  import Poke from \"./Poke.svelte\";\n  // define the data holding variable\n  let pokes;\n\n  onMount(async () => {\n    await fetch(`https://api.dev.perfivo.com/pokeapi/v0/pokemon/`)\n      .then(r => r.json())\n      .then(data => {\n        pokes = data;\n      });\n  })\n  console.log(pokes);\n</script>\n\n{#if pokes}\n  {#each pokes as poke }\n    <ul>\n      <li>    \n        <Poke {poke} />\n      </li>\n    </ul>\n  {/each}\n{:else}\n  <p class=\"loading\">loading...</p>\n{/if}\n\n<style>\n  .loading {\n    opacity: 0;\n    animation: 0.4s 0.8s forwards fade-in;\n  }\n  @keyframes fade-in {\n    from { opacity: 0; }\n    to { opacity: 1; }\n  }\n  li {\n    list-style-type: georgian;\n  }\n</style>\n"
+  ],
+  "names": [],
+  "mappings": "AAoBE,OAAO,eAAC,CAAC,AACP,MAAM,CAAE,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,AACnB,CAAC,AACD,EAAE,eAAC,CAAC,AACF,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,KAAK,AAChB,CAAC;ACED,QAAQ,cAAC,CAAC,AACR,OAAO,CAAE,CAAC,CACV,SAAS,CAAE,IAAI,CAAC,IAAI,CAAC,QAAQ,CAAC,qBAChC,CAAC,AACD,WAAW,qBAAQ,CAAC,AAClB,IAAI,AAAC,CAAC,AAAC,OAAO,CAAE,CAAC,AAAE,CAAC,AACpB,EAAE,AAAC,CAAC,AAAC,OAAO,CAAE,CAAC,AAAE,CAAC,AACpB,CAAC,AACD,EAAE,cAAC,CAAC,AACF,eAAe,CAAE,QAAQ,AAC3B,CAAC"
+}
