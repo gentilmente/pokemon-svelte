@@ -28,6 +28,7 @@
   }
   li {
     list-style-type: georgian;
+    list-style: none;
   }
 </style>
 

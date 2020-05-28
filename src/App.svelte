@@ -27,8 +27,8 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-md" />
-      <div class="col-md-8 text-center">
-      
+      <div class="col-md-8">
+
         <h1 class="display-4">Los Pokemones</h1>
         <Trainers {trainers} />
 
