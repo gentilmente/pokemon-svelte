@@ -31,6 +31,7 @@
   }
 </style>
 
+<h1>Trainers</h1>
 {#if trainers}
   <ul>
     {#each trainers as trainer}

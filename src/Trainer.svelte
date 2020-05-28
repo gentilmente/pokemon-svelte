@@ -9,9 +9,7 @@
         .catch()
     )
   ).then(data => {
-    console.log(data);
     pokeList = data.map(e => ({name: e.name,order: e.order,weight: e.weight}));
-    console.log(pokeList);
   });
 </script>
 

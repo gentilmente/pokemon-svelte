@@ -13,9 +13,7 @@
   let result;
 
   async function getResult() {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${query}/`
-    );
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}/`);
     let data = await response.json();
     return data;
   }
@@ -30,11 +28,8 @@
     <div class="row">
       <div class="col-md" />
       <div class="col-md-8 text-center">
+      
         <h1 class="display-4">Los Pokemones</h1>
-
-        <!--
-           <Pokes {pokes} /> 
-        -->
         <Trainers {trainers} />
 
         <form class="form-inline" on:submit|preventDefault={submitHandler}>
