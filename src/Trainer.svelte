@@ -1,7 +1,18 @@
 <script>
   import Poke from "./Poke.svelte";
-  // create a prop
   export let trainer;
+  let pokeList = [];
+  Promise.all(
+    trainer.pokemon.map(e =>
+      fetch(`https://pokeapi.co/api/v2/pokemon/${e.number}/`)
+        .then(r => r.json())
+        .catch()
+    )
+  ).then(data => {
+    console.log(data);
+    pokeList = data.map(e => ({name: e.name,order: e.order,weight: e.weight}));
+    console.log(pokeList);
+  });
 </script>
 
 <style>
@@ -24,15 +35,11 @@
   <br />
   {#if trainer.pokemon}
     <ul>
-      {#each trainer.pokemon as poke}
+      {#each pokeList as poke}
         <li>
           <Poke {poke} />
         </li>
       {/each}
     </ul>
-    <small>
-      trainer's pokes:
-      <b>{trainer.pokemon}</b>
-    </small>
   {/if}
 </article>

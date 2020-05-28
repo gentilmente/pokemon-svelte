@@ -1,20 +1,17 @@
 
 <script>
-  // create a prop
   export let poke;
 </script>
 
 <article>
     <h1>{poke.name}</h1>
     <small>
-      id: <b>{poke.id}</b>   
+      weight: <b>{poke.weight}</b>   
     </small><br/>
     <small>
-      Number: <b>{poke.number}</b>
+      order: <b>{poke.order}</b>
     </small><br/>
-    <small>
-      poke's trainer: <b>{poke.id}</b>
-    </small>
+
 </article>
 
 <style>
