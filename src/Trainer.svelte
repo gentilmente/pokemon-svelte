@@ -9,7 +9,13 @@
         .catch()
     )
   ).then(data => {
-    pokeList = data.map(e => ({name: e.name,order: e.order,weight: e.weight}));
+    pokeList = data.map(e => ({
+      name: e.name,
+      order: e.order,
+      weight: e.weight,
+      tag: e.types[0].type.name,
+      img: e.sprites.front_default
+    }));
   });
 </script>
 
@@ -21,6 +27,10 @@
     font-size: 1.4em;
     margin: 0;
     display: block;
+  }
+  li {
+    list-style: none;
+    margin-top: 1em;
   }
 </style>
 

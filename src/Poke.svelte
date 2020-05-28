@@ -1,26 +1,68 @@
-
 <script>
   export let poke;
 </script>
 
-<article>
-    <h1>{poke.name}</h1>
-    <small>
-      weight: <b>{poke.weight}</b>   
-    </small><br/>
-    <small>
-      order: <b>{poke.order}</b>
-    </small><br/>
-
-</article>
-
 <style>
-  article {
-    margin: 0 0 1em 0;
+
+  .card {
+    background-color: whitesmoke;
+    padding: 1.5rem 1.5rem 0rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 12px 12px 24px rgba(128, 128, 128, 0.2), -12px -12px 12px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  h1 {
-    font-size: 1.4em;
-    margin: 0;
-    display: block;
+  .card:hover {
+    animation: wiggle 0.3s;
+  }
+  .card__title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #43a047;
+  }
+  .card__tag {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    margin: 0.5rem 1rem;
+    background-color: #43a047;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .card__id {
+    color: #666;
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
 </style>
+
+<div class="card">
+  <div class="card__title" id="pokeName">{poke.name}</div>
+  <p class="card__id" id="pokeID">#{poke.order}</p>
+  <p class="card__weight" id="pokeWeight">weight: {poke.weight}</p>
+  <div class="card__tag" id="pokeTag">{poke.tag}</div>
+  <div class="card__img">
+    <img src="{poke.img}" alt="" id="pokeImg" />
+  </div>
+</div>

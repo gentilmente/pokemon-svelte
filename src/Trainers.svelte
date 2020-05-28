@@ -26,13 +26,12 @@
       opacity: 1;
     }
   }
-  li {
-    list-style-type: georgian;
-    list-style: none;
+  ul {
+    list-style-type: none;   
   }
 </style>
 
-<h1>Trainers</h1>
+<h2>Trainers</h2>
 {#if trainers}
   <ul>
     {#each trainers as trainer}

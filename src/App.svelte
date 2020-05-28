@@ -27,16 +27,15 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-md" />
-      <div class="col-md-8">
+      <div class="col-md-4">
 
-        <h1 class="display-4">Los Pokemones</h1>
+        <h1 class="display-6">Los Pokemones</h1>
         <Trainers {trainers} />
 
         <form class="form-inline" on:submit|preventDefault={submitHandler}>
           <input
             class="w-75 form-control"
-            placeholder="pokemon id"
-            type="number"
+            placeholder="e.g. 'ivysaur' or 2"
             bind:value={query} />
           <button class="w-25 btn btn-dark">get</button>
         </form>

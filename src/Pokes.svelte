@@ -35,6 +35,6 @@
     to { opacity: 1; }
   }
   li {
-    list-style-type: georgian;
+    list-style: none;
   }
 </style>
