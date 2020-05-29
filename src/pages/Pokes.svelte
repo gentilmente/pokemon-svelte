@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import Poke from "./Poke.svelte";
+  import Poke from "../components/Poke.svelte";
   // define the data holding variable
   let pokes;
 

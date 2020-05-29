@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import Trainer from "./Trainer.svelte";
+  import Trainer from "../components/Trainer.svelte";
   // define the data holding variable
   let trainers;
 

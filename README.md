@@ -17,3 +17,7 @@ npm run dev
 
   - Local:      http://127.0.0.1:3000
   - Network:    http://192.168.0.95:3000
+
+# To do:
+- change Bootstrap with Bulma.io
+- pokes page, get internal pokes, get real pokes from that
