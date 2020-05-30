@@ -39,6 +39,7 @@
     await fetch(url)
       .then(r => r.json())
       .then(data => {
+        //console.log(data);
         trainers = data;
       });
   });

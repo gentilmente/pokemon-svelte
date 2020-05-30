@@ -29,7 +29,6 @@
   });
 */
 
-  
   onMount(async () => {
     const internalPokes = await fetch(
       `https://api.dev.perfivo.com/pokeapi/v0/pokemon/`
@@ -38,30 +37,63 @@
     const dataWithTrainer = await Promise.all(
       internalPokes.map(internalPoke =>
         fetch(`https://pokeapi.co/api/v2/pokemon/${internalPoke.number}/`).then(
-          r => ({
-            data: r.json(),
-            trainer: internalPokes.trainer
+          async r => ({
+            data: await r.json(),
+            trainer: internalPoke.trainer
+              ? internalPoke.trainer.name
+              : "no trainer"
           })
         )
       )
     );
-    // ahora tenes un array de objetos con data y su trainer 
-    console.log(dataWithTrainer)
-    /*
-    pokeList = dataWithTrainer.map(e => ({
-      id: e.id,
-      name: e.name,
-      order: e.order,
-      weight: e.weight,
-      trainer: e.trainer
-
-      //tag: e.types[0].type.name || "",
-      //img: e.sprites.front_default || ""
+    pokeList = dataWithTrainer.map(({ data, trainer }) => ({
+      ...data,
+      trainer
     }));
-    */
-  });
-  console.log(pokeList);
 
+    console.table(
+      dataWithTrainer.map(({ data, trainer }) => ({
+        ...data,
+        trainer
+      }))
+    );
+    console.log(dataWithTrainer);
+    return;
+  });
+
+  /* onMount(async () => {
+    const internalPokes = await fetch(
+      `https://api.dev.perfivo.com/pokeapi/v0/pokemon/`
+    ).then(r => r.json());
+
+    const dataWithTrainer = await Promise.all(
+      internalPokes.map(internalPoke =>
+        fetch(`https://pokeapi.co/api/v2/pokemon/${internalPoke.number}/`)
+          .then(r => r.json())
+          .then(data => ({
+            poke: data,
+            trainer: internalPoke.trainer
+          }))
+      )
+    );
+    // ahora tenes un array de objetos con data y su trainer 
+    pokeList = dataWithTrainer.map(e => {
+      console.log(e);
+    }); */
+
+  /*return {
+          id: e.id,
+          name: e.name,
+          order: e.order,
+          weight: e.weight,
+          trainer: e.trainer
+  
+          //tag: e.types[0].type.name || "",
+          //img: e.sprites.front_default || ""
+        }; 
+    //console.log(dataWithTrainer);
+    //console.log(pokeList);
+  });*/
 </script>
 
 <style>
@@ -86,6 +118,8 @@
   {#each pokeList as poke}
     <ul>
       <li>
+
+        <p>...waiting</p>
 
         <Poke {poke} />
 
