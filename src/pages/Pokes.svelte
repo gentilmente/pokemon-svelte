@@ -3,6 +3,11 @@
   import Poke from "../components/Poke.svelte";
 
   let pokeList = [];
+  let _pokeId = "";
+  let _trainerId = "";
+  let isChecked = false;
+
+  const url = "https://api.dev.perfivo.com/pokeapi/v0/pokemon/";
 
   onMount(async () => {
     const internalPokes = await fetch(
@@ -14,6 +19,7 @@
         fetch(`https://pokeapi.co/api/v2/pokemon/${internalPoke.number}/`).then(
           async r => ({
             data: await r.json(),
+            internalId: internalPoke.id,
             trainer: internalPoke.trainer
               ? internalPoke.trainer.name
               : "no trainer"
@@ -21,14 +27,26 @@
         )
       )
     );
-    pokeList = dataWithTrainer.map(({ data, trainer }) => ({
+    pokeList = dataWithTrainer.map(({ data, internalId, trainer }) => ({
       ...data,
+      internalId,
       trainer
     }));
     return;
   });
 
-  let isChecked = false;
+  async function setTrainer() {
+    await fetch(url + _pokeId + "/", {
+      method: "PUT",
+      body: JSON.stringify({ trainer: _trainerId }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => console.log("Success:", response));
+  }
 </script>
 
 <style>
@@ -176,6 +194,18 @@
   }
 </style>
 
+<form class="form-inline" on:submit|preventDefault={setTrainer}>
+  <input
+    class="w-100 form-control"
+    placeholder="poke id"
+    bind:value={_pokeId} />
+  <input
+    class="w-100 form-control"
+    placeholder="trainer id"
+    bind:value={_trainerId} />
+  <button class="w-30 btn btn-dark">assign trainer</button>
+</form>
+<p />
 <input id="s2d" type="checkbox" class="switch" bind:checked={isChecked} />
 <label for="s2d">Wild Pokémons</label>
 

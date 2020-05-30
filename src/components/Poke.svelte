@@ -61,9 +61,9 @@
   <div class="card__title" id="pokeName">{poke.name}</div>
   <p class="card__id" id="pokeID">#{poke.id}</p>
   {#if poke.trainer}
-    <p class="card__id" id="pokeID">trainer: {poke.trainer}</p>
+    <p class="ccard__weight" id="pokeID">trainer: {poke.trainer}</p>
   {/if}
-  <p class="card__weight" id="pokeWeight">weight: {poke.weight}</p>
+  <p class="card__weight" id="pokeWeight">ID: {poke.internalId}</p>
 
   <div class="card__tag" id="pokeTag">
     {poke.tag || poke.types[0].type.name}

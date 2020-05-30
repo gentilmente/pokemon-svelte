@@ -3,7 +3,7 @@
   import Trainer from "../components/Trainer.svelte";
   // define the data holding variable
   let trainers;
-  var url = "https://api.dev.perfivo.com/pokeapi/v0/trainers/";
+  const url = "https://api.dev.perfivo.com/pokeapi/v0/trainers/";
 
   let query = "";
   let id = "";
