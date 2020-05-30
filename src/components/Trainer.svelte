@@ -10,9 +10,9 @@
     )
   ).then(data => {
     pokeList = data.map(e => ({
+      id: e.id,
       name: e.name,
       order: e.order,
-      weight: e.weight,
       tag: e.types[0].type.name,
       img: e.sprites.front_default
     }));
