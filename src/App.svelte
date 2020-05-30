@@ -4,8 +4,14 @@
   import { routes } from "./routes";
 </script>
 
-<h1 class="display-6">Los Pokemones</h1>
-<Nav />
-<section class="section has-navbar-fixed-top">
-  <Router {routes} />
-</section>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <h1 class="display-6">Los Pokemones</h1>
+      <Nav />
+      <section class="section has-navbar-fixed-top">
+        <Router {routes} />
+      </section>
+    </div>
+  </div>
+</div>

@@ -19,36 +19,28 @@
 </script>
 
 <main>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md" />
-      <div class="col-md-4">
 
-        <form class="form-inline" on:submit|preventDefault={submitHandler}>
-          <input
-            class="w-75 form-control"
-            placeholder="e.g. 'ivysaur' or 2"
-            bind:value={query} />
-          <button class="w-25 btn btn-dark">get</button>
-        </form>
+  <form class="form-inline" on:submit|preventDefault={submitHandler}>
+    <input
+      class="w-75 form-control"
+      placeholder="e.g. 'ivysaur' or 2"
+      bind:value={query} />
+    <button class="w-25 btn btn-dark">get</button>
+  </form>
 
-        {#if result === undefined}
-          <p />
-        {:else}
-          {#await result}
+  {#if result === undefined}
+    <p />
+  {:else}
+    {#await result}
 
-            <p>Loading...</p>
+      <p>Loading...</p>
 
-          {:then poke}
-            <Poke {poke} />
-          {:catch error}
-            {error.message}
-          {/await}
-        {/if}
-        <p />
-      </div>
-      <div class="col-md" />
-    </div>
-  </div>
+    {:then poke}
+      <Poke {poke} />
+    {:catch error}
+      {error.message}
+    {/await}
+  {/if}
+  <p />
 
 </main>

@@ -4,7 +4,7 @@
 
 <style>
   .card {
-    margin-top: 1em;
+    margin-top: 1.5em;
     background-color: whitesmoke;
     padding: 1.5rem 1.5rem 0rem 1.5rem;
     border-radius: 20px;
@@ -57,7 +57,6 @@
   }
 </style>
 
-{(console.log(poke), '')}
 <div class="card">
   <div class="card__title" id="pokeName">{poke.name}</div>
   <p class="card__id" id="pokeID">#{poke.id}</p>

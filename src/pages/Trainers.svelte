@@ -70,13 +70,13 @@
 <h2>Trainers</h2>
 
 <form class="form-inline" on:submit|preventDefault={setNewTrainer}>
-  <input class="w-75 form-control" placeholder="name" bind:value={query} />
-  <button class="w-25 btn btn-dark">create new</button>
+  <input class="w-70 form-control" placeholder="name" bind:value={query} />
+  <button class="w-30 btn btn-dark">create new</button>
 </form>
 
 <form class="form-inline" on:submit|preventDefault={deleteTrainer}>
-  <input class="w-75 form-control" placeholder="id" bind:value={id} />
-  <button class="w-25 btn btn-danger">delete</button>
+  <input class="w-70 form-control" placeholder="id" bind:value={id} />
+  <button class="w-30 btn btn-danger">delete</button>
 </form>
 
 {#if trainers}
