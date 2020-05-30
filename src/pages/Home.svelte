@@ -24,8 +24,6 @@
       <div class="col-md" />
       <div class="col-md-4">
 
-        
-
         <form class="form-inline" on:submit|preventDefault={submitHandler}>
           <input
             class="w-75 form-control"

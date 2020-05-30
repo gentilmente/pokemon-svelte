@@ -57,12 +57,20 @@
   }
 </style>
 
+{(console.log(poke), '')}
 <div class="card">
   <div class="card__title" id="pokeName">{poke.name}</div>
-  <p class="card__id" id="pokeID">#{poke.order}</p>
+  <p class="card__id" id="pokeID">#{poke.id}</p>
+  {#if poke.trainer}
+    <p class="card__id" id="pokeID">trainer: {poke.trainer}</p>
+  {/if}
   <p class="card__weight" id="pokeWeight">weight: {poke.weight}</p>
-  <div class="card__tag" id="pokeTag">{poke.tag || poke.types[0].type.name}</div>
+
+  <div class="card__tag" id="pokeTag">
+    {poke.tag || poke.types[0].type.name}
+  </div>
   <div class="card__img">
     <img src={poke.img || poke.sprites.front_default} alt="" id="pokeImg" />
   </div>
+
 </div>
