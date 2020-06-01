@@ -1,5 +1,65 @@
 <script>
+  import { getContext } from "svelte";
+  import { fly } from "svelte/transition";
+
+  import Dialog from "./Dialog.svelte";
+
+  const { open } = getContext("simple-modal") ? getContext("simple-modal") : "";
+
+  let opening = false;
+  let opened = false;
+  let closing = false;
+  let closed = false;
+  let name;
+  let status = 0;
+
   export let poke;
+  let pokeId = 0;
+
+  const onCancel = text => {
+    name = "";
+    status = -1;
+  };
+
+  const onOkay = text => {
+    name = text;
+    status = 1;
+    setTrainer(pokeId, text.id);
+  };
+
+  const url = "https://api.dev.perfivo.com/pokeapi/v0/pokemon/";
+
+  async function setTrainer(pokeId, trainerId) {
+    await fetch(url + pokeId + "/", {
+      method: "PUT",
+      body: JSON.stringify({ trainer: trainerId }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => console.log("Success:", response));
+    // window.location.reload(false);
+  }
+
+  function showDialog() {
+    pokeId = poke.internalId;
+    open(
+      Dialog,
+      {
+        message: "pick a trainer",
+        hasForm: true,
+        onCancel,
+        onOkay
+      },
+      {
+        closeButton: false,
+        closeOnEsc: false,
+        closeOnOuterClick: false
+      }
+    );
+  }
 </script>
 
 <style>
@@ -52,7 +112,7 @@
   }
 </style>
 
-<div class="card">
+<div class="card" on:click={showDialog}>
   <div class="card__title" id="pokeName">{poke.name}</div>
   <p class="ccard__weight" id="pokeID">#{poke.id}</p>
   {#if poke.trainer}
