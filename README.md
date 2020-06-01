@@ -22,4 +22,4 @@ npm run dev
 - pokes page, get internal pokes, get real pokes from that
 - delete trainer get error but it works, why?
 - create trainer with pokes. api how? first create trainer, then update pokes?
-
+- 
