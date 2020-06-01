@@ -32,11 +32,6 @@
     border-radius: 50px;
     cursor: pointer;
   }
-  .card__id {
-    color: #666;
-    font-size: 0.6rem;
-    margin-bottom: 0.5rem;
-  }
 
   @keyframes wiggle {
     0% {
