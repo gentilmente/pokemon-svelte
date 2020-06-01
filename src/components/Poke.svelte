@@ -1,5 +1,45 @@
 <script>
+  import { getContext } from "svelte";
+  import { fly } from "svelte/transition";
+
+  import Dialog from "./Dialog.svelte";
+
+  const { open } = getContext("simple-modal") ? getContext("simple-modal") : "";
+
+  let opening = false;
+  let opened = false;
+  let closing = false;
+  let closed = false;
+  let name;
+  let status = 0;
+
   export let poke;
+
+  const onCancel = text => {
+    name = "";
+    status = -1;
+  };
+
+  const onOkay = text => {
+    name = text;
+    status = 1;
+  };
+  function showDialog() {
+    open(
+      Dialog,
+      {
+        message: "pick a trainer",
+        hasForm: true,
+        onCancel,
+        onOkay
+      },
+      {
+        closeButton: false,
+        closeOnEsc: false,
+        closeOnOuterClick: false
+      }
+    );
+  }
 </script>
 
 <style>
@@ -52,7 +92,7 @@
   }
 </style>
 
-<div class="card">
+<div class="card" on:click={showDialog}>
   <div class="card__title" id="pokeName">{poke.name}</div>
   <p class="ccard__weight" id="pokeID">#{poke.id}</p>
   {#if poke.trainer}

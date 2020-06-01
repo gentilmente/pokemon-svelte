@@ -1,5 +1,7 @@
 <script>
   import Poke from "./Poke.svelte";
+  import Modal from "./Modal.svelte";
+
   export let trainer;
   let pokeList = [];
   Promise.all(

@@ -1,5 +1,4 @@
 <script>
-  import { Button } from 'sveltestrap';
   import Nav from "./components/Nav.svelte";
   import { Router } from "svelte-router-spa";
   import { routes } from "./routes";
