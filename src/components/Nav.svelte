@@ -48,8 +48,8 @@
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>Options</DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>Trade</DropdownItem>
           <DropdownItem>Edit</DropdownItem>
+          <DropdownItem>feature X</DropdownItem>
           <DropdownItem divider />
           <DropdownItem on:click={() => (window.location.reload(false))}>Reset</DropdownItem>
         </DropdownMenu>
