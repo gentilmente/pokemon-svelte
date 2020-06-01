@@ -46,6 +46,7 @@
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
       .then(response => console.log("Success:", response));
+    window.location.reload(false);
   }
 </script>
 
@@ -197,12 +198,12 @@
 <form class="form-inline" on:submit|preventDefault={setTrainer}>
   <input
     class="w-100 form-control"
-    placeholder="poke id"
-    bind:value={_pokeId} />
-  <input
-    class="w-100 form-control"
     placeholder="trainer id"
     bind:value={_trainerId} />
+  <input
+    class="w-100 form-control"
+    placeholder="poke id"
+    bind:value={_pokeId} />
   <button class="w-30 btn btn-dark">assign trainer</button>
 </form>
 <p />
@@ -224,4 +225,3 @@
 {:else}
   <p class="loading">loading...</p>
 {/if}
- 
